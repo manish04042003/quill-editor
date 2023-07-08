@@ -21,9 +21,16 @@
     </div>
     <div id="editor"></div>
 
-    <button onclick="getvalue()">get html</button>
+<h1>Precious</h1>
+    <div id="myPrecious"></div>
+<h1>Text</h1>
 
-    <div id="append"></div>
+    <div id="justText"></div>
+<h1>html</h1>
+
+    <div id="justHtml"></div>
+
+    <div id="string"></div>
     <script>
         var container = document.getElementById('editor');
         let tollBarOption = [
@@ -40,10 +47,20 @@
         })
 
 
-        function getvalue() {
-            document.getElementById('append').innerText = document.querySelectorAll('.ql-editor')[0].innerHTML
-            console.log(document.querySelectorAll('.ql-editor')[0].innerHTML)
-        }
+
+        var preciousContent = document.getElementById('myPrecious');
+        var justTextContent = document.getElementById('justText');
+        var justHtmlContent = document.getElementById('justHtml');
+
+        quill.on('text-change', function () {
+            var delta = quill.getContents();
+            var text = quill.getText();
+            var justHtml = quill.root.innerHTML;
+            preciousContent.innerHTML = JSON.stringify(delta);
+            justTextContent.innerHTML = text;
+            justHtmlContent.innerHTML = justHtml;
+        });
+
     </script>
 </body>
 
