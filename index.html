@@ -27,6 +27,7 @@
         voluptates quis natus nisi quam delectus magnam earum, provident iure maiores. Neque non distinctio illum?
     </div>
     <div id="editor"></div>
+    <div id="editort"></div>
 
 <h1>Precious</h1>
     <div id="myPrecious"></div>
@@ -65,8 +66,11 @@
             var justHtml = quill.root.innerHTML;
             preciousContent.innerHTML = JSON.stringify(delta);
             justTextContent.innerHTML = text;
-            justHtmlContent.innerHTML = justHtml;
+            justHtmlContent.innerText = justHtml;
         });
+
+        quill.insertEmbed(10, 'image', 'https://quilljs.com/images/cloud.png');
+
 
     </script>
 </body>
