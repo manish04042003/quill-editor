@@ -15,7 +15,8 @@
 </head>
 
 <style>
-    .ql-editor img,#justHtml img{
+    .ql-editor img,
+    #justHtml img {
         max-width: 90px !important;
         border-radius: 20px;
     }
@@ -29,16 +30,18 @@
     <div id="editor"></div>
     <div id="editort"></div>
 
-<h1>Precious</h1>
+    <h1>Precious</h1>
     <div id="myPrecious"></div>
-<h1>Text</h1>
+    <h1>Text</h1>
 
     <div id="justText"></div>
-<h1>html</h1>
+    <h1>html</h1>
 
     <div id="justHtml"></div>
 
     <div id="string"></div>
+
+    <button onclick="insertImage()">insert image</button>
     <script>
         var container = document.getElementById('editor');
         let tollBarOption = [
@@ -68,8 +71,21 @@
             justTextContent.innerHTML = text;
             justHtmlContent.innerText = justHtml;
         });
+        function insertImage() {
+            var range = quill.getSelection();
+            if (range) {
+                if (range.length == 0) {
+                    console.log('User cursor is at index', range.index);
+                    quill.insertEmbed(range.index, 'image', 'https://manishsite.netlify.app/assets/img/perfil.png');
+                } else {
+                    var text = quill.getText(range.index, range.length);
+                    console.log('User has highlighted: ', text);
+                }
+            } else {
+                console.log('User cursor is not in editor');
+            }
+        }
 
-        quill.insertEmbed(10, 'image', 'https://quilljs.com/images/cloud.png');
 
 
     </script>
